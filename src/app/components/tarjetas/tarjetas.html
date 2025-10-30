@@ -1,1 +1,17 @@
-<p>tarjetas works!</p>
+<div class="row row-cols-1 row-cols-md-3 g-4 m-5 animated fadeIn">
+    @for (item of items; track item) {
+    <div (click)="verArtista(item)" class="col puntero">
+        <div class="card h-100">
+            <img [src]="item.images[0].url" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"> {{item.name}} </h5>
+                <p class="card-text">
+                    @for (artista of item.artists; track $index) {
+                    <span class="badge text-bg-success">{{artista.name}}</span>
+                    }
+                </p>
+            </div>
+        </div>
+    </div>
+    }
+</div>
