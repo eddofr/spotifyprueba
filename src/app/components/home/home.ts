@@ -24,7 +24,7 @@ export class Home {
   ngOnInit(): void {
     this.spotify.getNewReleases().subscribe(data => {
       this.nuevasCanciones = data;
-      console.log(this.nuevasCanciones);
+      //console.log(this.nuevasCanciones);
       this.cd.detectChanges();
     });
   }

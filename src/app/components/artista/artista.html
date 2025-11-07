@@ -1,16 +1,25 @@
+
+
+@if (artista) {
 <div class="row animated fadeIn">
-<div class="col-2">
-    <img [src]="artista.images[0].url" class="img-thumbnail img-circle">
-</div>
-<div class="col">
-    <h3> {{artista.name}} </h3> 
-    <p>
-        <a [href]="artista.external_urls.spotify" target="_blank">Ir a la pagina del artista</a>
-    </p>
-</div>
-<div class="col-4 text-right">
-    <button routerLink="/search" class="btn btn-outline-danger">Regresar</button>
-</div>
+    <div class="col-2">
+        @if (artista.images?.length > 0) {
+        <img [src]="artista.images[0].url" class="img-thumbnail img-circle">
+        }
+
+    </div>
+    <div class="col">
+        <h3> {{artista.name}} </h3>
+        @if (artista.external_urls) {
+        <p>
+            <a [href]="artista.external_urls.spotify" target="_blank">Ir a la pagina del artista</a>
+        </p>
+        }
+
+    </div>
+    <div class="col-4 text-right">
+        <button routerLink="/search" class="btn btn-outline-danger">Regresar</button>
+    </div>
 </div>
 
 <div class="row m-5">
@@ -25,19 +34,21 @@
         </thead>
         <tbody>
             @for (track of topTracks; track track) {
-               <tr>
+            <tr>
                 <th>
                     <img [src]="track.album.images[0].url" class="img-thumb">
-                </th>
+                </th>    
                 <th>{{track.album.name}}</th>
                 <th>{{track.name}}</th>
                 <th>
-                    <audio [src]="" controls></audio>
-                    <!--<iframe [src]="track.uri | domseguro " width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe> -->
+                    <!--<audio [src]="" controls></audio>-->
+                    <!--<iframe [src]="track.uri " width="300" height="80" frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>-->
                 </th>
-            </tr> 
+            </tr>
             }
-            
+
         </tbody>
-    </table>
+    </table> 
 </div>
+
+}
